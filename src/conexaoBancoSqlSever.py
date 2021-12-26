@@ -4,7 +4,7 @@ import pyodbc
 dados_conexao=(
     '''
     Driver={SQL Server};
-    Server=192.168.2.4;
+    Server=DESKTOP-KEIJ2RI;
     Database=RELATORIO_VENDA;    
     '''
     )
