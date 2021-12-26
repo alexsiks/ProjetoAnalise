@@ -1,25 +1,21 @@
 import pyodbc
 
+# String de Conexão de dados para Sql.
+dados_conexao=(
+    '''
+    Driver={SQL Server};
+    Server=192.168.2.4;
+    Database=RELATORIO_VENDA;    
+    '''
+    )
 
-def conectar():
-    conn = pyodbc.connect(
-        "DRIVER={SQL SERVER};SERVER=192.168.2.4;PORT=3306;DATABASE=PESQUISA;UID=USER;PWD=123;")
-    cursor = conn.cursor()
-    cursor.execute('''
-                create table if not exists RELATORIO(
-                    dataVenda datetime,
-                    Faturamento money,
-                    Custo money,
-                    Lucro money
-        )''')
-    return conn
+conexao=pyodbc.connect(dados_conexao)
+print("Conexão realizada")
+cursor=conexao.cursor()
 
-
-def registrarRelatorio(faturamento, custo, lucro):
-    cursor = conectar()
-    cursor.execute(f''' 
-                   insert into relatorio(dataVenda,Faturamento,Custo,Lucro) values (getdate(),{faturamento},{custo},{lucro})
-                   
-                   ''')
+#Função de Inserção de dados com Sql.
+def registrarRelatorio(faturamento,custo,lucro):
+    comando = f"insert into RELATORIO(DATA_VENDA,faturamento,custo,lucro) values (GETDATE(),{faturamento},{custo},{lucro})"
+    cursor.execute(comando)
     cursor.commit()
-    cursor.close()
+    conexao.close()

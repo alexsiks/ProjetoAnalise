@@ -1,8 +1,7 @@
 import os
 from cauculo import caucularLucro
-import conexaoBanco
+import conexaoBancoSqlite
 import conexaoBancoSqlSever
-from datetime import date
 
 os.system('cls')
 
@@ -10,11 +9,12 @@ os.system('cls')
 faturamento=float(input("INFORME O VALOR DO FATURAMENTO: "))
 custo=float(input("INFORME O VALOR DE CUSTO: "))
 lucroCauculado=caucularLucro(faturamento,custo)
-dataVenda=date.today()
 
 
-##Imprimir dados
-conexaoBanco.registrarRelatorio(faturamento,custo,lucroCauculado)
+##Conexão Sqlite
+conexaoBancoSqlite.registrarRelatorio(faturamento,custo,lucroCauculado)
+
+##Conexão Sql sever
 conexaoBancoSqlSever.registrarRelatorio(faturamento,custo,lucroCauculado)
 
 print('''\nLUCRO: ''',lucroCauculado)
