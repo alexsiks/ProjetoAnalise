@@ -17,4 +17,5 @@ conexaoBancoSqlite.registrarRelatorio(faturamento,custo,lucroCauculado)
 ##Conexão Sql sever
 conexaoBancoSqlSever.registrarRelatorio(faturamento,custo,lucroCauculado)
 
+#Saída de Dados
 print('''\nLUCRO: ''',lucroCauculado)
