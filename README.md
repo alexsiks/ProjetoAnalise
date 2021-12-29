@@ -3,14 +3,4 @@
 1- Projeto de análise de Faturamento, Custo e de Lucro.
 
 
-
-
-
-def registrarRelatorio(faturamento, custo, lucro):
-    cursor = conectar()
-    cursor.execute(f''' 
-                   insert into relatorio(dataVenda,Faturamento,Custo,Lucro) values (getdate(),{faturamento},{custo},{lucro})
-                   
-                   ''')
-    cursor.commit()
-    cursor.close()
+![dadosDash.jpg](https://github.com/alexsiks/ProjetoAnalise/blob/372255aa2cf47b0954e18653cd5912074460c4c0/dadosDash.jpg)
